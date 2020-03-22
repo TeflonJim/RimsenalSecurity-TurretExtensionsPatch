@@ -1,0 +1,363 @@
+<Patch>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>*/ThingDef[defName="NestHMG" or defName="NestAGS" or defName="NestMMG" or @Name="BaseMCBuilding"]</xpath>
+        <value>
+            <li Class="TurretExtensions.TurretFrameworkExtension">
+                <useMannerShootingAccuracy>true</useMannerShootingAccuracy>
+                <useMannerAimingDelayFactor>true</useMannerAimingDelayFactor>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="NestHMG" or defName="NestAGS" or defName="NestMMG" or @Name="BaseMCBuilding"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_SmartForcedTarget"/>
+        </value>
+    </Operation>
+
+    <!-- Steam-exclusive turret -->
+    <Operation Class="PatchOperationConditional">
+        <xpath>*/ThingDef[defName="NestMissile"]</xpath>
+        <match Class="PatchOperationSequence">
+            <success>Always</success>
+            <operations>
+                <li Class="PatchOperationAddModExtension">
+                    <xpath>*/ThingDef[defName="NestMissile"]</xpath>
+                    <value>
+                        <li Class="TurretExtensions.TurretFrameworkExtension">
+                            <useMannerShootingAccuracy>true</useMannerShootingAccuracy>
+                            <useMannerAimingDelayFactor>true</useMannerAimingDelayFactor>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>*/ThingDef[defName="NestMissile"]/comps</xpath>
+                    <value>
+                        <li Class="TurretExtensions.CompProperties_SmartForcedTarget"/>
+                        <!-- upgrade -->
+                        <li Class="TurretExtensions.CompProperties_Upgradable">
+                            <!-- Basics -->
+                            <description>Reinforce the missile launcher's barrel with plasteel to double its durability. Easy to upgrade, with failures being less likely and critical failures being less serious.</description>
+
+                            <!-- Costs -->
+                            <costList>
+                                <Plasteel>75</Plasteel>
+                            </costList>
+                            <researchPrerequisites>
+                                <li>DefenceEmplacementTech</li>
+                            </researchPrerequisites>
+                            <workToUpgrade>10800</workToUpgrade>
+                            <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+
+                            <!-- Job Driver -->
+                            <upgradeSuccessChanceFactor>1.1</upgradeSuccessChanceFactor>
+                            <upgradeFailMajorDmgPctRange>
+                                <min>0.1</min>
+                                <max>0.4</max>
+                            </upgradeFailMajorDmgPctRange>
+
+                            <!-- Results -->
+                            <barrelDurabilityFactor>2</barrelDurabilityFactor>
+                        </li>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+
+    <!-- ===== Upgrades ===== -->
+
+    <!-- Shard Sentry -->
+    <Operation Class="PatchOperationConditional">
+        <xpath>*/ThingDef[defName="ShardSentry"]/statBases/ShootingAccuracyTurret</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>*/ThingDef[defName="ShardSentry"]/statBases</xpath>
+            <value>
+                <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+            </value>
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="ShardSentry"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_Upgradable">
+                <!-- Basics -->
+                <description>Increase the shard sentry's fire rate even further, as well as overall accuracy.  Difficult to upgrade though, with failures being more likely and critical failures more serious.</description>
+
+                <!-- Costs -->
+                <costList>
+                    <Plasteel>40</Plasteel>
+                    <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+                <researchPrerequisites>
+                    <li>ShardSentryTech</li>
+                </researchPrerequisites>
+                <workToUpgrade>4200</workToUpgrade>
+                <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+
+                <!-- Job Driver -->
+                <upgradeSuccessChanceFactor>0.9</upgradeSuccessChanceFactor>
+                <upgradeFailMajorDmgPctRange>
+                    <min>0.2</min>
+                    <max>0.7</max>
+                </upgradeFailMajorDmgPctRange>
+
+                <!-- Results -->
+                <statOffsets>
+                    <ShootingAccuracyTurret>0.01</ShootingAccuracyTurret>
+                </statOffsets>
+                <basePowerConsumptionFactor>1.25</basePowerConsumptionFactor>
+                <turretBurstWarmupTimeFactor>0.8</turretBurstWarmupTimeFactor>
+                <turretBurstCooldownTimeFactor>0.8</turretBurstCooldownTimeFactor>
+                <turretGunDef>Gun_ShardSentryUpgraded</turretGunDef>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Wave Emitter -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="WaveEmitter"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_Upgradable">
+                <!-- Basics -->
+                <description>Increase the wave emitter's fire rate and microwave emitting radius. Difficult to upgrade though, with failures being more likely and critical failures more serious.</description>
+
+                <!-- Costs -->
+                <costList>
+                    <Plasteel>50</Plasteel>
+                    <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+                <researchPrerequisites>
+                    <li>MicrowaveTurretTech</li>
+                </researchPrerequisites>
+                <workToUpgrade>5400</workToUpgrade>
+                <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+
+                <!-- Job Driver -->
+                <upgradeSuccessChanceFactor>0.9</upgradeSuccessChanceFactor>
+                <upgradeFailMajorDmgPctRange>
+                    <min>0.2</min>
+                    <max>0.7</max>
+                </upgradeFailMajorDmgPctRange>
+
+                <!-- Results -->
+                <basePowerConsumptionFactor>1.25</basePowerConsumptionFactor>
+                <turretBurstWarmupTimeFactor>0.8</turretBurstWarmupTimeFactor>
+                <turretBurstCooldownTimeFactor>0.8</turretBurstCooldownTimeFactor>
+                <turretGunDef>Gun_WaveEmitterUpgraded</turretGunDef>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- HMG Nest -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="NestHMG"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_Upgradable">
+                <!-- Basics -->
+                <description>Increase the overall durability and improve the recoil dampening of the HMG nest. Easy to upgrade, with failures being less likely and critical failures being less serious.</description>
+
+                <!-- Costs -->
+                <costList>
+                    <Steel>130</Steel>
+                </costList>
+                <researchPrerequisites>
+                    <li>DefenceEmplacementTech</li>
+                </researchPrerequisites>
+                <workToUpgrade>2500</workToUpgrade>
+                <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+
+                <!-- Job Driver -->
+                <upgradeSuccessChanceFactor>1.1</upgradeSuccessChanceFactor>
+                <upgradeFailMajorDmgPctRange>
+                    <min>0.1</min>
+                    <max>0.4</max>
+                </upgradeFailMajorDmgPctRange>
+
+                <!-- Results -->
+                <statFactors>
+                    <MaxHitPoints>1.2</MaxHitPoints>
+                </statFactors>
+                <barrelDurabilityFactor>1.2</barrelDurabilityFactor>
+                <turretGunDef>Gun_NestHMGUpgraded</turretGunDef>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- AGS Nest -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="NestAGS"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_Upgradable">
+                <!-- Basics -->
+                <description>Increase the durability of the AGS nest and improve the cycling system of the mounted grenade launcher. Easy to upgrade, with failures being less likely and critical failures being less serious.</description>
+
+                <!-- Costs -->
+                <costList>
+                    <Steel>70</Steel>
+                    <ComponentIndustrial>4</ComponentIndustrial>
+                </costList>
+                <researchPrerequisites>
+                    <li>DefenceEmplacementTech</li>
+                </researchPrerequisites>
+                <workToUpgrade>3500</workToUpgrade>
+                <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+
+                <!-- Job Driver -->
+                <upgradeSuccessChanceFactor>1.1</upgradeSuccessChanceFactor>
+                <upgradeFailMajorDmgPctRange>
+                    <min>0.1</min>
+                    <max>0.4</max>
+                </upgradeFailMajorDmgPctRange>
+
+                <!-- Results -->
+                <statFactors>
+                    <MaxHitPoints>1.2</MaxHitPoints>
+                </statFactors>
+                <turretGunDef>Gun_AGSUpgraded</turretGunDef>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Portable MG -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="NestMMG"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_Upgradable">
+                <!-- Basics -->
+                <description>By replacing some parts of the tripod with new parts made from advanced materials, overall durability improves and mass decreases. Also improves recoil dampening. Easy to upgrade, with failures being less likely and critical failures being less serious.</description>
+
+                <!-- Costs -->
+                <costList>
+                    <Plasteel>20</Plasteel>
+                </costList>
+                <researchPrerequisites>
+                    <li>DefenceEmplacementTech</li>
+                </researchPrerequisites>
+                <workToUpgrade>3800</workToUpgrade>
+                <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+
+                <!-- Job Driver -->
+                <upgradeSuccessChanceFactor>1.1</upgradeSuccessChanceFactor>
+                <upgradeFailMajorDmgPctRange>
+                    <min>0.1</min>
+                    <max>0.4</max>
+                </upgradeFailMajorDmgPctRange>
+
+                <!-- Results -->
+                <statOffsets>
+                    <Mass>-6</Mass>
+                </statOffsets>
+                <statFactors>
+                    <MaxHitPoints>1.2</MaxHitPoints>
+                </statFactors>
+                <turretGunDef>Gun_NestMMGUpgraded</turretGunDef>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Surveillance Turret -->
+    <Operation Class="PatchOperationConditional">
+        <xpath>*/ThingDef[defName="SuvTurret"]/statBases/ShootingAccuracyTurret</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>*/ThingDef[defName="SuvTurret"]/statBases</xpath>
+            <value>
+                <ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
+            </value>
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="SuvTurret"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_Upgradable">
+                <!-- Basics -->
+                <description>Improve the sensor array to slightly increase overall accuracy and significantly increase the speed of target acquisition. Also slightly improves the firing mechanism of the mounted gun to increase projectile damage and velocity.</description>
+
+                <!-- Costs -->
+                <costList>
+                    <Plasteel>20</Plasteel>
+                    <ComponentIndustrial>5</ComponentIndustrial>
+                </costList>
+                <researchPrerequisites>
+                    <li>KineticTech</li>
+                </researchPrerequisites>
+                <workToUpgrade>3200</workToUpgrade>
+                <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+
+                <!-- Results -->
+                <statOffsets>
+                    <ShootingAccuracyTurret>0.005</ShootingAccuracyTurret>
+                </statOffsets>
+                <basePowerConsumptionFactor>1.25</basePowerConsumptionFactor>
+                <turretBurstWarmupTimeFactor>0.5</turretBurstWarmupTimeFactor>
+                <turretGunDef>Gun_SuvTurretUpgraded</turretGunDef>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Molten Cannon -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="Turret_MC"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_Upgradable">
+                <!-- Basics -->
+                <description>Improve the overall durability, nullify the flammability and increase the range of the molten cannon.</description>
+
+                <!-- Costs -->
+                <costList>
+                    <Plasteel>40</Plasteel>
+                    <Uranium>20</Uranium>
+                    <ComponentIndustrial>3</ComponentIndustrial>
+                </costList>
+                <researchPrerequisites>
+                    <li>MoltenTech</li>
+                </researchPrerequisites>
+                <workToUpgrade>8000</workToUpgrade>
+                <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+
+                <!-- Results -->
+                <statFactors>
+                    <MaxHitPoints>1.5</MaxHitPoints>
+                    <Flammability>0</Flammability>
+                </statFactors>
+                <turretGunDef>Artillery_MCUpgraded</turretGunDef>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Rocket Turret -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/ThingDef[defName="RocketTurret"]/comps</xpath>
+        <value>
+            <li Class="TurretExtensions.CompProperties_Upgradable">
+                <!-- Basics -->
+                <description>Improve the overall durability, nullify the flammability and increase the range of the rocket turret.</description>
+
+                <!-- Costs -->
+                <costList>
+                    <Plasteel>30</Plasteel>
+                    <Uranium>15</Uranium>
+                    <ComponentIndustrial>3</ComponentIndustrial>
+                </costList>
+                <researchPrerequisites>
+                    <li>SiegeTech</li>
+                </researchPrerequisites>
+                <workToUpgrade>10000</workToUpgrade>
+                <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+
+                <!-- Results -->
+                <statFactors>
+                    <MaxHitPoints>1.5</MaxHitPoints>
+                    <Flammability>0</Flammability>
+                </statFactors>
+                <basePowerConsumptionFactor>1.25</basePowerConsumptionFactor>
+                <turretGunDef>Gun_RocketTurretUpgraded</turretGunDef>
+            </li>
+        </value>
+    </Operation>
+
+</Patch>

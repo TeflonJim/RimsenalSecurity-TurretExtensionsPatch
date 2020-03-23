@@ -4,8 +4,8 @@
         <xpath>*/ThingDef[defName="NestHMG" or defName="NestAGS" or defName="NestMMG" or @Name="BaseMCBuilding"]</xpath>
         <value>
             <li Class="TurretExtensions.TurretFrameworkExtension">
-                <useMannerShootingAccuracy>true</useMannerShootingAccuracy>
-                <useMannerAimingDelayFactor>true</useMannerAimingDelayFactor>
+                <useManningPawnShootingAccuracy>true</useManningPawnShootingAccuracy>
+                <useManningPawnAimingDelayFactor>true</useManningPawnAimingDelayFactor>
             </li>
         </value>
     </Operation>
@@ -27,8 +27,8 @@
                     <xpath>*/ThingDef[defName="NestMissile"]</xpath>
                     <value>
                         <li Class="TurretExtensions.TurretFrameworkExtension">
-                            <useMannerShootingAccuracy>true</useMannerShootingAccuracy>
-                            <useMannerAimingDelayFactor>true</useMannerAimingDelayFactor>
+                            <useManningPawnShootingAccuracy>true</useManningPawnShootingAccuracy>
+                            <useManningPawnAimingDelayFactor>true</useManningPawnAimingDelayFactor>
                         </li>
                     </value>
                 </li>
@@ -59,7 +59,8 @@
                             </upgradeFailMajorDmgPctRange>
 
                             <!-- Results -->
-                            <barrelDurabilityFactor>2</barrelDurabilityFactor>
+                            <fuelCapacityFactor>2</fuelCapacityFactor>
+                            <fuelMultiplierFactor>2</fuelMultiplierFactor>
                         </li>
                     </value>
                 </li>
@@ -181,7 +182,8 @@
                 <statFactors>
                     <MaxHitPoints>1.2</MaxHitPoints>
                 </statFactors>
-                <barrelDurabilityFactor>1.2</barrelDurabilityFactor>
+                <fuelCapacityFactor>1.2</fuelCapacityFactor>
+                <fuelMultiplierFactor>1.2</fuelMultiplierFactor>
                 <turretGunDef>Gun_NestHMGUpgraded</turretGunDef>
             </li>
         </value>

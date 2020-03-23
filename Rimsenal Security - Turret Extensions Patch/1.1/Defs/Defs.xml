@@ -1,7 +1,7 @@
 <Defs>
 
     <!-- Shard Sentry -->
-    <ThingDef ParentName="BaseHumanGun">
+    <ThingDef ParentName="BaseWeaponTurret">
         <defName>Gun_ShardSentryUpgraded</defName>
         <label>shard sentry gun</label>
         <graphicData>
@@ -58,7 +58,7 @@
         </projectile>
     </ThingDef>
 
-    <ThingDef ParentName="BaseHumanGun">
+    <ThingDef ParentName="BaseWeaponTurret">
         <defName>Gun_WaveEmitterUpgraded</defName>
         <label>microwave emitter</label>
         <graphicData>
@@ -99,7 +99,7 @@
     </ThingDef>
 
     <!-- HMG Nest -->
-    <ThingDef ParentName="BaseHumanGun">
+    <ThingDef ParentName="BaseWeaponTurret">
         <defName>Gun_NestHMGUpgraded</defName>
         <label>heavy machine gun</label>
         <graphicData>
@@ -140,7 +140,7 @@
     </ThingDef>
 
     <!-- AGS Launcher -->
-    <ThingDef ParentName="BaseHumanGun">
+    <ThingDef ParentName="BaseWeaponTurret">
         <defName>Gun_AGSUpgraded</defName>
         <label>automatic grenade launcher</label>
         <graphicData>
@@ -185,7 +185,7 @@
     </ThingDef>
 
     <!-- Portable MG -->
-    <ThingDef ParentName="BaseHumanGun">
+    <ThingDef ParentName="BaseWeaponTurret">
         <defName>Gun_NestMMGUpgraded</defName>
         <label>medium machine gun</label>
         <graphicData>
@@ -240,7 +240,7 @@
         </projectile>
     </ThingDef>
 
-    <ThingDef ParentName="BaseHumanGun">
+    <ThingDef ParentName="BaseWeaponTurret">
         <defName>Gun_SuvTurretUpgraded</defName>
         <label>kinetic long rifle</label>
         <graphicData>
@@ -301,7 +301,7 @@
     </ThingDef>
 
     <!-- Rocket Turret -->
-    <ThingDef ParentName="BaseHumanGun">
+    <ThingDef ParentName="BaseWeaponTurret">
         <defName>Gun_RocketTurretUpgraded</defName>
         <label>rocket launcher</label>
         <graphicData>

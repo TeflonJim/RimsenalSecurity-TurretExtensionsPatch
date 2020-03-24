@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>Rimsenal Security - Turret Extensions Patch (continued)</name>
+    <author>TeflonJim</author>
+    <supportedVersions>
+        <li>1.0</li>
+        <li>1.1</li>
+    </supportedVersions>
+    <packageId>teflonjim.xeonovadan.rs.tx</packageId>
+    <description>
+An update for 1.1 of this Turret Extensions Patch by XeoNovaDan.
+
+Patches the turrets added by Rimsenal Security Pack to make full use of the extra capabilities offered by Turret Extensions.
+    </description>
+    <modDependencies>
+        <li>
+            <packageId>xeonovadan.turretextensions</packageId>
+            <displayName>[XND] Turret Extensions</displayName>
+            <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1496122245</steamWorkshopUrl>
+        </li>
+        <li>
+            <packageId>rimsenal.security</packageId>
+            <displayName>Rimsenal - Security pack</displayName>
+            <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=736139206</steamWorkshopUrl>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>xeonovadan.turretextensions</li>
+        <li>rimsenal.security</li>
+    </loadAfter>
+</ModMetaData>
